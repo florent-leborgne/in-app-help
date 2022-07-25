@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import { useRouter } from 'next/router';
 import {
   EuiBadge,
   EuiButton,
@@ -8,8 +9,10 @@ import {
   EuiTextColor,
   EuiTitle,
 } from '@elastic/eui';
+import React from 'react';
 
 const Index: FunctionComponent = () => {
+  const router = useRouter();
   return (
     <EuiPageTemplate template="centeredBody">
       <EuiText color="subded" size="s" grow={false}>
@@ -26,11 +29,8 @@ const Index: FunctionComponent = () => {
         <h1>Which version would you like to explore?</h1>
       </EuiTitle>
       <EuiSpacer size="m" />
-      <EuiButton href="/current" fullWidth>
-        Current{' '}
-        <EuiBadge color="warning" iconType="wait" iconSide="left">
-          In-progress
-        </EuiBadge>
+      <EuiButton onClick={() => router.push('/current')} fullWidth>
+        Current <EuiBadge color="warning">In-progress</EuiBadge>
       </EuiButton>
       <EuiSpacer size="s" />
       <EuiButton disabled fullWidth>
