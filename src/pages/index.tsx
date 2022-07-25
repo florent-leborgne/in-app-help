@@ -1,36 +1,43 @@
 import { FunctionComponent } from 'react';
-import Head from 'next/head';
-import { EuiSpacer } from '@elastic/eui';
-import HomeHero from '../components/starter/home_hero';
-import Wrapper from '../components/starter/wrapper';
-import HomeTemplates from '../components/starter/home_templates';
-import HomeWhy from '../components/starter/home_why';
+import {
+  EuiBadge,
+  EuiButton,
+  EuiPageTemplate,
+  EuiSpacer,
+  EuiText,
+  EuiTextColor,
+  EuiTitle,
+} from '@elastic/eui';
 
 const Index: FunctionComponent = () => {
   return (
-    <>
-      <Head>
-        <title>Home</title>
-      </Head>
-
-      <Wrapper>
-        <HomeHero />
-
-        <EuiSpacer size="xxl" />
-        <EuiSpacer size="xxl" />
-
-        <HomeWhy />
-
-        <EuiSpacer size="xxl" />
-        <EuiSpacer size="xxl" />
-        <EuiSpacer size="xxl" />
-
-        <HomeTemplates />
-
-        <EuiSpacer size="xxl" />
-        <EuiSpacer size="xxl" />
-      </Wrapper>
-    </>
+    <EuiPageTemplate template="centeredBody">
+      <EuiText color="subded" size="s" grow={false}>
+        <EuiTextColor color="default">
+          <h1>In-app help Prototype</h1>
+        </EuiTextColor>
+        <p>
+          This prototype provides in-context, interactive guidelines for when,
+          and how, to include content in the UI for as many cases as possible.
+        </p>
+      </EuiText>
+      <EuiSpacer size="l" />
+      <EuiTitle size="xs">
+        <h1>Which version would you like to explore?</h1>
+      </EuiTitle>
+      <EuiSpacer size="m" />
+      <EuiButton href="/current" fullWidth>
+        Current{' '}
+        <EuiBadge color="warning" iconType="wait" iconSide="left">
+          In-progress
+        </EuiBadge>
+      </EuiButton>
+      <EuiSpacer size="s" />
+      <EuiButton disabled fullWidth>
+        Docs reuse - Not available yet
+      </EuiButton>
+      <EuiSpacer size="s" />
+    </EuiPageTemplate>
   );
 };
 
