@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'react';
 import { EuiFlexGroup, EuiFlexItem, EuiCard, EuiIcon } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
+import React from 'react';
 
 const Index: FunctionComponent = () => {
   return (
