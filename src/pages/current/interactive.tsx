@@ -2,7 +2,6 @@ import { FunctionComponent } from 'react';
 import Link from 'next/link';
 import { EuiLink, EuiText, EuiButton } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
-import React from 'react';
 
 const Discover: FunctionComponent = () => {
   return (

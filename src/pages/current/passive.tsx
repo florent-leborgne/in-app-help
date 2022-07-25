@@ -1,31 +1,24 @@
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
-import { EuiLink, EuiText } from '@elastic/eui';
+import { EuiLink, EuiSpacer, EuiText, EuiTitle } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
-import React from 'react';
 
-const Discover: FunctionComponent = () => {
+const Passive: FunctionComponent = () => {
   return (
     <KibanaLayout
       pageHeader={{
-        pageTitle: 'Discover',
+        pageTitle: 'Passive help',
+        description:
+          'Passive help includes all bits of help that do not require any specific action from the user. It is the first layer of help, dedicated to critical information that must be visible in priority for users.',
       }}>
+      <EuiSpacer size="xxl" />
+
       <EuiText>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a erat
-          sed arcu imperdiet eleifend eu vel ante. Nam dapibus lacus id
-          efficitur luctus. Nunc vitae viverra erat, at euismod metus. Nam nec
-          nulla ornare, aliquam arcu in, luctus diam. Phasellus convallis lorem
-          fringilla, dapibus lectus in, pretium dui. Pellentesque massa nulla,
-          tempus ut elit at, scelerisque commodo eros. Proin interdum libero
-          aliquam, volutpat justo ut, posuere nulla.
-        </p>
-        <Link href="/kibana/" passHref>
-          <EuiLink color="primary">Go to Kibana home</EuiLink>
-        </Link>
+        I am an <strong>EuiText</strong>. Use me to provide context or general
+        definitions when introducing pages and sections.
       </EuiText>
     </KibanaLayout>
   );
 };
 
-export default Discover;
+export default Passive;
