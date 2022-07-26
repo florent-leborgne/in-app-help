@@ -1,39 +1,56 @@
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
-import { EuiLink, EuiText, EuiButton } from '@elastic/eui';
+import {
+  EuiLink,
+  EuiText,
+  EuiButton,
+  EuiCheckbox,
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiIcon,
+  EuiIconTip,
+  EuiSpacer,
+  EuiToolTip,
+  useGeneratedHtmlId,
+} from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
 
 const Discover: FunctionComponent = () => {
+  const explainedCheckboxId = useGeneratedHtmlId({
+    prefix: 'explainedCheckbox',
+  });
+
   return (
     <KibanaLayout
       pageHeader={{
-        pageTitle: 'Dashboards',
-        rightSideItems: [
-          <EuiButton
-            color="primary"
-            fill
-            onClick={() => {
-              console.log('Create dashboard');
-            }}
-            key="create-dashboard">
-            Create dashboard
-          </EuiButton>,
-        ],
+        pageTitle: 'Interactive help',
+        description:
+          'Interactive help is not visible by default. Users have to hover or click somewhere intentionally to read that content.',
       }}>
-      <EuiText>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a erat
-          sed arcu imperdiet eleifend eu vel ante. Nam dapibus lacus id
-          efficitur luctus. Nunc vitae viverra erat, at euismod metus. Nam nec
-          nulla ornare, aliquam arcu in, luctus diam. Phasellus convallis lorem
-          fringilla, dapibus lectus in, pretium dui. Pellentesque massa nulla,
-          tempus ut elit at, scelerisque commodo eros. Proin interdum libero
-          aliquam, volutpat justo ut, posuere nulla.
-        </p>
-        <Link href="/kibana/" passHref>
-          <EuiLink color="primary">Go to Kibana home</EuiLink>
-        </Link>
-      </EuiText>
+      <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
+        <EuiFlexItem grow={false}>
+          <EuiCheckbox
+            id={explainedCheckboxId}
+            label="This option has a tooltip"
+            onChange={() => {}}
+          />
+        </EuiFlexItem>
+
+        <EuiFlexItem grow={false}>
+          <EuiIconTip
+            content="I'm a tooltip based on an IconTip. Use me to provide useful yet non critical additional information in one or 2 sentences, or when there is not enough space for important information in packed UIs. If the information is important enough, use hint text instead. If I'm longer than 1 or 2 sentences, use a popover instead."
+            position="right"
+          />
+        </EuiFlexItem>
+      </EuiFlexGroup>
+      <EuiSpacer size="xxl" />
+      <EuiToolTip
+        position="top"
+        content="I'm a tooltip on an icon. Use me to name icons or actions on hover, not to provide help because help must be identifiable by users with an IconTip.">
+        <EuiIcon tabIndex="0" type="alert" title="Icon with tooltip" />
+      </EuiToolTip>
+      <EuiSpacer size="xxl" />
+      
     </KibanaLayout>
   );
 };
