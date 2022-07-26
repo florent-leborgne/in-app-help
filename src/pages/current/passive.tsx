@@ -1,24 +1,15 @@
 import { FunctionComponent } from 'react';
 import {
   EuiButton,
-  EuiCheckbox,
   EuiFieldText,
-  EuiFlexGroup,
-  EuiFlexItem,
   EuiFormRow,
-  EuiIcon,
-  EuiIconTip,
   EuiSearchBar,
   EuiSpacer,
   EuiText,
-  EuiToolTip,
-  useGeneratedHtmlId,
 } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
 
 const Passive: FunctionComponent = () => {
-
-
   return (
     <KibanaLayout
       pageHeader={{
