@@ -58,11 +58,10 @@ const Passive: FunctionComponent = () => {
         Click me
       </EuiButton>
       <EuiSpacer size="xxl" />
-      <EuiFormRow label="I'm a field label. I should be 1 or 2 words most of the time.">
-        <EuiFieldText
-          name="last"
-          helpText="I am some friendly hint text. I am optionnal. I explain information necessary for filling a form or "
-        />
+      <EuiFormRow
+        label="I'm a field label. I should be 1 or 2 words most of the time."
+        helpText="I am some friendly hint text. I am optionnal. I explain information necessary for filling a form or understanding what I can do with a setting or option.">
+        <EuiFieldText name="last" />
       </EuiFormRow>
     </KibanaLayout>
   );

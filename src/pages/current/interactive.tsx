@@ -1,9 +1,5 @@
 import { FunctionComponent } from 'react';
-import Link from 'next/link';
 import {
-  EuiLink,
-  EuiText,
-  EuiButton,
   EuiCheckbox,
   EuiFlexGroup,
   EuiFlexItem,
@@ -32,7 +28,9 @@ const Discover: FunctionComponent = () => {
           <EuiCheckbox
             id={explainedCheckboxId}
             label="This option has a tooltip"
-            onChange={() => {}}
+            onChange={() => {
+              console.log('You clicked me');
+            }}
           />
         </EuiFlexItem>
 
@@ -47,10 +45,9 @@ const Discover: FunctionComponent = () => {
       <EuiToolTip
         position="top"
         content="I'm a tooltip on an icon. Use me to name icons or actions on hover, not to provide help because help must be identifiable by users with an IconTip.">
-        <EuiIcon tabIndex="0" type="alert" title="Icon with tooltip" />
+        <EuiIcon type="alert" title="Icon with tooltip" />
       </EuiToolTip>
       <EuiSpacer size="xxl" />
-      
     </KibanaLayout>
   );
 };
