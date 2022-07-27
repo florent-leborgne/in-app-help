@@ -10,6 +10,7 @@ const KibanaLayout: FunctionComponent<KibanaLayoutProps> = ({
   ...rest
 }) => {
   const styles = kibanaLayoutStyles();
+
   return (
     <div css={styles.mainWrapper}>
       <CollapsibleNav />

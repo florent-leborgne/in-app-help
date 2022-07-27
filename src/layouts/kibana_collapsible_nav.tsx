@@ -13,6 +13,11 @@ import {
   EuiListGroup,
   useGeneratedHtmlId,
   EuiAvatar,
+  EuiPopover,
+  EuiFlexGroup,
+  EuiPopoverTitle,
+  EuiButton,
+  EuiLink,
 } from '@elastic/eui';
 import find from 'lodash/find';
 import findIndex from 'lodash/findIndex';
@@ -38,12 +43,22 @@ const KibanaLinks: EuiPinnableListGroupItemProps[] = [
   { label: 'External help', href: `${pathPrefix}/current/external` },
 ];
 
+const docsUrl = 'https://docs.elastic.dev/guide/ui/in-prod-help#links-to-docs';
+
 const CollapsibleNav = () => {
   const [navIsOpen, setNavIsOpen] = useState(false);
 
   const breadcrumbs = [
     {
       text: 'Home',
+      href: `${pathPrefix}/`,
+    },
+    {
+      text: 'Current',
+      href: `${pathPrefix}/current`,
+    },
+    {
+      text: 'pageTitle',
     },
   ];
 
@@ -117,6 +132,11 @@ const CollapsibleNav = () => {
   function addLinkNameToUnpinTitle(listItem: EuiPinnableListGroupItemProps) {
     return `Unpin ${listItem.label}`;
   }
+
+  const [isHelpPopoverOpen, setIsHelpPopoverOpen] = useState(false);
+  const onHelpButtonClick = () =>
+    setIsHelpPopoverOpen(isHelpPopoverOpen => !isHelpPopoverOpen);
+  const closeHelpPopover = () => setIsHelpPopoverOpen(false);
 
   const collapsibleNavId = useGeneratedHtmlId({ prefix: 'collapsibleNav' });
 
@@ -222,14 +242,43 @@ const CollapsibleNav = () => {
               <EuiHeaderLogo
                 key="elastic-logo"
                 iconType="logoElastic"
-                href={`${pathPrefix}/kibana`}>
-                Elastic
+                href={`${pathPrefix}/`}>
+                Elastic in-app help prototype
               </EuiHeaderLogo>,
             ],
             borders: 'none',
           },
           {
             items: [
+              <>
+                <EuiPopover
+                  button={
+                    <EuiHeaderSectionItemButton
+                      iconType="help"
+                      onClick={onHelpButtonClick}
+                    />
+                  }
+                  anchorPosition="downRight"
+                  closePopover={closeHelpPopover}
+                  data-test-subj="helpMenuButton"
+                  id="headerHelpMenu"
+                  isOpen={isHelpPopoverOpen}
+                  repositionOnScroll>
+                  <EuiPopoverTitle>
+                    <EuiFlexGroup responsive={false}>
+                      <EuiFlexItem>
+                        <h2>Some help menu</h2>
+                      </EuiFlexItem>
+                    </EuiFlexGroup>
+                  </EuiPopoverTitle>
+                  <EuiFlexItem>
+                    <EuiLink href={docsUrl} target="_blank">
+                      In-app help guidelines
+                    </EuiLink>
+                  </EuiFlexItem>
+                </EuiPopover>
+              </>,
+
               <ThemeSwitcher key={useGeneratedHtmlId()} />,
               <EuiHeaderSectionItemButton
                 key={useGeneratedHtmlId()}
