@@ -36,7 +36,7 @@ const Discover: FunctionComponent = () => {
         target="_blank"
         iconType="help"
         data-test-subj="docsButton">
-        I'm an empty button for standalone links to the docs
+        I&apos;m an empty button for standalone links to the docs
       </EuiButtonEmpty>
       <EuiSpacer size="xxl" />
       <EuiText>

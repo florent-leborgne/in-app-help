@@ -49,11 +49,11 @@ const Interactive: FunctionComponent = () => {
   const flyoutContent = (
     <EuiText>
       <p>
-        I'm a flyout. I can provide long, rich text to users to help them. I am
-        often used to let users make some additional configurations within the
-        products, but I can also serve as a dedicated help panel, guiding users
-        through steps, or providing great reference information like syntax
-        help.
+        I&apos;m a flyout. I can provide long, rich text to users to help them.
+        I am I am often used to let users make some additional configurations
+        within the products, but I can also serve as a dedicated help panel,
+        guiding through steps, or providing great reference information like
+        syntax help.
       </p>
 
       <p>
@@ -175,11 +175,11 @@ const Interactive: FunctionComponent = () => {
         <div style={{ width: '300px' }}>
           <EuiText size="s">
             <p>
-              I'm the popover content. You can use me to display more
+              I&apos;m the popover content. You can use me to display more
               information about something. Information that is still important
               enough to be displayed in the UI, but not so critical so it
-              doesn't have to be visible by default. Users may or may not access
-              me.
+              doesn&apos;t have to be visible by default. Users may or may not
+              access me.
             </p>
             <p>
               Some cool things about me:
@@ -228,11 +228,11 @@ const Interactive: FunctionComponent = () => {
             <div style={{ width: '300px' }}>
               <EuiText size="s">
                 <p>
-                  I'm the popover content. You can use me to display more
+                  I&apos;m the popover content. You can use me to display more
                   information about something. Information that is still
-                  important enough to be displayed in the UI, but not so
-                  critical so it doesn't have to be visible by default. Users
-                  may or may not access me.
+                  important enough to be displayed in the UI, b ut not so
+                  critical so it doesn&apos;t have to be visible by default.
+                  Users may or may not access me.
                 </p>
                 <p>
                   Some cool things about me:
