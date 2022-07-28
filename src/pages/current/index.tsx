@@ -14,10 +14,10 @@ const Index: FunctionComponent = () => {
       <EuiFlexGroup gutterSize="l">
         <EuiFlexItem>
           <EuiCard
-            icon={<EuiIcon size="xxl" type="notebookApp" />}
-            title="Passive help"
+            icon={<EuiIcon size="xxl" type="eye" />}
+            title="Active help"
             description="Help that users see independently of their will."
-            href="current/passive"
+            href="current/active"
           />
         </EuiFlexItem>
         <EuiFlexItem>

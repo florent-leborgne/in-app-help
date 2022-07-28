@@ -2,7 +2,7 @@ import { EuiButtonEmpty, EuiLink, EuiSpacer, EuiText } from '@elastic/eui';
 import { FunctionComponent } from 'react';
 import KibanaLayout from '../../layouts/kibana';
 
-const Discover: FunctionComponent = () => {
+const External: FunctionComponent = () => {
   const docsUrl =
     'https://docs.elastic.dev/guide/ui/in-prod-help#links-to-docs';
   const learnMoreLink = (
@@ -20,7 +20,7 @@ const Discover: FunctionComponent = () => {
       <EuiText>
         <h3>Learn more links</h3>
         <p>
-          I am any passive or interactive help. When there is much more to the
+          I am any active or interactive help. When there is much more to the
           story than we can embed in the UI, it might be worth adding a Learn
           more link that takes users to the docs. {learnMoreLink}
         </p>
@@ -47,4 +47,4 @@ const Discover: FunctionComponent = () => {
   );
 };
 
-export default Discover;
+export default External;

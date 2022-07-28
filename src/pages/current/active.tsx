@@ -3,31 +3,33 @@ import {
   EuiButton,
   EuiButtonEmpty,
   EuiCallOut,
+  EuiEmptyPrompt,
   EuiFieldText,
   EuiFormRow,
   EuiLink,
   EuiSearchBar,
   EuiSpacer,
   EuiText,
+  EuiTitle,
 } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
 
-const Passive: FunctionComponent = () => {
+const Active: FunctionComponent = () => {
   return (
     <KibanaLayout
       pageHeader={{
-        pageTitle: 'Passive help',
+        pageTitle: 'Active help',
         description:
-          'Passive help includes all bits of help that do not require any specific action from the user. It is the first layer of help, dedicated to critical information that must be visible in priority for users.',
+          'Active help includes all bits of help that do not require any specific action from the user. It is there by default. It is the first layer of help, for information that must be immediately visible.',
       }}>
       <EuiText>
         <h3>Intros and descriptions</h3>
       </EuiText>
       <EuiSpacer size="m" />
       <EuiText>
-        I am an introduction or general description. Use me below the title in
-        pages, sections or flyouts to provide context or general definitions. I
-        am not mandatory. Add me only if there is relevant information to share.
+        I am an introduction or general description. Use me below page, section
+        and flyout titles to provide context or general definitions. I am not
+        mandatory. Add me only if there is relevant information to share.
       </EuiText>
       <EuiSpacer size="xxl" />
       <EuiText>
@@ -75,7 +77,7 @@ const Passive: FunctionComponent = () => {
         <h3>Callouts</h3>
       </EuiText>
       <EuiSpacer size="m" />
-      <EuiCallOut title="I'm an information callout title." iconType="eye">
+      <EuiCallOut title="I'm an information callout title" iconType="eye">
         <p>
           Use me to provide outstanding information to users. You can also use
           it to provide tips to users. Adding an icon is optional.
@@ -93,7 +95,8 @@ const Passive: FunctionComponent = () => {
         iconType="check">
         <p>
           Use me to confirm the success of an operation. I can be just a title
-          if there is no additional information required.
+          if there is no additional information required. For quick confirmation
+          messages, use an ephemeral toast (check EUI) instead.
         </p>
       </EuiCallOut>
       <EuiSpacer size="m" />
@@ -136,8 +139,46 @@ const Passive: FunctionComponent = () => {
         </EuiButtonEmpty>
       </EuiCallOut>
       <EuiSpacer size="xxl" />
+      <EuiText>
+        <h3>Empty states</h3>
+      </EuiText>
+      <EuiSpacer size="m" />
+      <EuiEmptyPrompt
+        iconType="logoSecurity"
+        hasBorder
+        title={<h2>Title, usually action-oriented</h2>}
+        body={
+          <>
+            <p>
+              I&apos;m an empty state. Use me instead of blank screens to let
+              users know that there&apos;s nothing here, because nothing exists,
+              or there is no result, and provide guidance for what to do next.
+            </p>
+            <p>
+              Write a description that explains what this is or why the user
+              should do it. This description should be 1 or 2 sentences, but
+              definitely 3 lines top to keep a good readability.
+            </p>
+          </>
+        }
+        actions={
+          <EuiButton color="primary" fill>
+            Action (mandatory)
+          </EuiButton>
+        }
+        footer={
+          <>
+            <EuiTitle size="xxs">
+              <h3>A footer, for example to link to docs.</h3>
+            </EuiTitle>
+            <EuiLink href="#" target="_blank">
+              Read the docs
+            </EuiLink>
+          </>
+        }
+      />
     </KibanaLayout>
   );
 };
 
-export default Passive;
+export default Active;

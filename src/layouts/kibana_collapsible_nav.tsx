@@ -38,7 +38,7 @@ const TopLinks: EuiPinnableListGroupItemProps[] = [
 ];
 
 const KibanaLinks: EuiPinnableListGroupItemProps[] = [
-  { label: 'Passive help', href: `${pathPrefix}/current/passive` },
+  { label: 'Active help', href: `${pathPrefix}/current/active` },
   { label: 'Interactive help', href: `${pathPrefix}/current/interactive` },
   { label: 'External help', href: `${pathPrefix}/current/external` },
 ];

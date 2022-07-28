@@ -19,6 +19,7 @@ import {
   EuiText,
   EuiTitle,
   EuiToolTip,
+  EuiTourStep,
   useGeneratedHtmlId,
 } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
@@ -124,6 +125,35 @@ const Interactive: FunctionComponent = () => {
     );
   }
 
+  let currentTourStep = 1;
+
+  const [isTourActive, setIsTourActive] = useState(false);
+  const resetTour = () => {
+    setIsTourActive(isTourActive => !isTourActive);
+    currentTourStep = 1;
+  };
+  const incrementStep = () => (currentTourStep = 2);
+  const finishTour = () => setIsTourActive(false);
+
+  const demoTourSteps = [
+    {
+      step: 1,
+      title: 'Step 1',
+      content: (
+        <span>
+          <p>Use me to describe what is new, or what to look at precisely.</p>
+          <EuiSpacer />
+          <EuiButton onClick={incrementStep}>Got it</EuiButton>
+        </span>
+      ),
+    },
+    {
+      step: 2,
+      title: 'Step 2',
+      content: <p>Another thing to show to users.</p>,
+    },
+  ];
+
   return (
     <KibanaLayout
       pageHeader={{
@@ -137,13 +167,23 @@ const Interactive: FunctionComponent = () => {
       <EuiSpacer size="m" />
       <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
         <EuiFlexItem grow={false}>
-          <EuiCheckbox
-            id={explainedCheckboxId}
-            label="This option has a tooltip"
-            onChange={() => {
-              console.log('You clicked me');
-            }}
-          />
+          <EuiTourStep
+            content={demoTourSteps[0].content}
+            isStepOpen={currentTourStep === 1 && isTourActive}
+            onFinish={finishTour}
+            step={1}
+            stepsTotal={demoTourSteps.length}
+            subtitle="I am a subtitle that appears above the title"
+            title={demoTourSteps[0].title}
+            anchorPosition="rightUp">
+            <EuiCheckbox
+              id={explainedCheckboxId}
+              label="This option has a tooltip"
+              onChange={() => {
+                console.log('You clicked me');
+              }}
+            />
+          </EuiTourStep>
         </EuiFlexItem>
 
         <EuiFlexItem grow={false}>
@@ -164,50 +204,60 @@ const Interactive: FunctionComponent = () => {
         <h3>Popovers</h3>
       </EuiText>
       <EuiSpacer size="m" />
-      <EuiPopover
-        button={
-          <EuiButton
-            iconType="arrowDown"
-            iconSide="right"
-            onClick={onButtonClick3}>
-            Popover on a button
-          </EuiButton>
-        }
-        isOpen={isPopoverOpen3}
-        closePopover={closePopover3}
-        anchorPosition="downCenter">
-        <EuiPopoverTitle>Short popover title</EuiPopoverTitle>
-        <div style={{ width: '300px' }}>
-          <EuiText size="s">
-            <p>
-              I&apos;m the popover content. You can use me to display more
-              information about something. Information that is still important
-              enough to be displayed in the UI, but not so critical so it
-              doesn&apos;t have to be visible by default. Users may or may not
-              access me.
-            </p>
-            <p>
-              Some cool things about me:
-              <ul>
-                <li>
-                  I can handle <strong>text formatting</strong> and tables
-                </li>
-                <li>I can embed a search</li>
-                <li>I can handle pagination</li>
-                <li>I accept screenshots and gifs</li>
-              </ul>
-            </p>
-            <p>
-              If I become too long, consider using a flyout instead. The content
-              will be easier to read.
-            </p>
-          </EuiText>
-        </div>
-        <EuiPopoverFooter>
-          <EuiButton size="s">Read full documentation</EuiButton>
-          <EuiButton size="s">Close</EuiButton>
-        </EuiPopoverFooter>
-      </EuiPopover>
+      <EuiTourStep
+        anchorPosition="rightUp"
+        content={demoTourSteps[1].content}
+        isStepOpen={currentTourStep === 2 && isTourActive}
+        onFinish={finishTour}
+        step={2}
+        stepsTotal={demoTourSteps.length}
+        subtitle="I am a subtle subtitle"
+        title={demoTourSteps[1].title}>
+        <EuiPopover
+          button={
+            <EuiButton
+              iconType="arrowDown"
+              iconSide="right"
+              onClick={onButtonClick3}>
+              Popover on a button
+            </EuiButton>
+          }
+          isOpen={isPopoverOpen3}
+          closePopover={closePopover3}
+          anchorPosition="downCenter">
+          <EuiPopoverTitle>Short popover title</EuiPopoverTitle>
+          <div style={{ width: '300px' }}>
+            <EuiText size="s">
+              <p>
+                I&apos;m the popover content. You can use me to display more
+                information about something. Information that is still important
+                enough to be displayed in the UI, but not so critical so it
+                doesn&apos;t have to be visible by default. Users may or may not
+                access me.
+              </p>
+              <p>
+                Some cool things about me:
+                <ul>
+                  <li>
+                    I can handle <strong>text formatting</strong> and tables
+                  </li>
+                  <li>I can embed a search</li>
+                  <li>I can handle pagination</li>
+                  <li>I accept screenshots and gifs</li>
+                </ul>
+              </p>
+              <p>
+                If I become too long, consider using a flyout instead. The
+                content will be easier to read.
+              </p>
+            </EuiText>
+          </div>
+          <EuiPopoverFooter>
+            <EuiButton size="s">Read full documentation</EuiButton>
+            <EuiButton size="s">Close</EuiButton>
+          </EuiPopoverFooter>
+        </EuiPopover>
+      </EuiTourStep>
       <EuiSpacer size="m" />
       <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
         <EuiFlexItem grow={false}>
@@ -270,6 +320,20 @@ const Interactive: FunctionComponent = () => {
       <EuiSpacer size="m" />
       <EuiButton onClick={showFlyout}>Overlay flyout</EuiButton>
       {flyout}
+      <EuiSpacer size="xxl" />
+      <EuiText>
+        <h3>Tours</h3>
+        <p>
+          Tours are usually forced to users the first time they open an app
+          after a new feature is released, but they can still interact with it
+          in several ways.
+        </p>
+      </EuiText>
+      <EuiSpacer size="m" />
+      <EuiButtonEmpty iconType="refresh" flush="left" onClick={resetTour}>
+        Open tour
+      </EuiButtonEmpty>
+      <EuiSpacer />
     </KibanaLayout>
   );
 };
