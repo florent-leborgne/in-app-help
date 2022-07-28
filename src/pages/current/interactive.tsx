@@ -32,6 +32,11 @@ const Interactive: FunctionComponent = () => {
     setIsPopoverOpen3(isPopoverOpen3 => !isPopoverOpen3);
   const closePopover3 = () => setIsPopoverOpen3(false);
 
+  const [isPopoverOpen4, setIsPopoverOpen4] = useState(false);
+  const onButtonClick4 = () =>
+    setIsPopoverOpen4(isPopoverOpen4 => !isPopoverOpen4);
+  const closePopover4 = () => setIsPopoverOpen4(false);
+
   const [isFlyoutVisible, setIsFlyoutVisible] = useState(false);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const complicatedFlyoutTitleId = useGeneratedHtmlId({
@@ -217,12 +222,12 @@ const Interactive: FunctionComponent = () => {
         <EuiFlexItem grow={false}>
           <EuiPopover
             button={
-              <EuiIcon type="questionInCircle" onClick={onButtonClick3}>
+              <EuiIcon type="questionInCircle" onClick={onButtonClick4}>
                 Popover on an icon
               </EuiIcon>
             }
-            isOpen={isPopoverOpen3}
-            closePopover={closePopover3}
+            isOpen={isPopoverOpen4}
+            closePopover={closePopover4}
             anchorPosition="downCenter">
             <EuiPopoverTitle>Short popover title</EuiPopoverTitle>
             <div style={{ width: '300px' }}>
