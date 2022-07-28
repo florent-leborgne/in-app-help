@@ -156,7 +156,7 @@ const Interactive: FunctionComponent = () => {
       <EuiSpacer size="xxl" />
       <EuiToolTip
         position="top"
-        content="I'm a tooltip on an icon. Use me to name icons or actions on hover, not to provide help because help must be identifiable by users with an IconTip.">
+        content="I'm a tooltip on an icon. I'm mandatory if the icon is clickable. Use me to name icons or actions on hover, not to provide help because help must be identifiable by users with an IconTip.">
         <EuiIcon type="alert" title="Icon with tooltip" />
       </EuiToolTip>
       <EuiSpacer size="xxl" />

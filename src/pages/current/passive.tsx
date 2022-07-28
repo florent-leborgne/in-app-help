@@ -1,8 +1,11 @@
 import { FunctionComponent } from 'react';
 import {
   EuiButton,
+  EuiButtonEmpty,
+  EuiCallOut,
   EuiFieldText,
   EuiFormRow,
+  EuiLink,
   EuiSearchBar,
   EuiSpacer,
   EuiText,
@@ -67,6 +70,72 @@ const Passive: FunctionComponent = () => {
         helpText="I am some friendly hint text. I am optionnal. I explain information necessary for filling a form or understanding what I can do with a setting or option. I should be 1 or 2 sentences, and definitely displayed on less than 2 lines.">
         <EuiFieldText name="last" />
       </EuiFormRow>
+      <EuiSpacer size="xxl" />
+      <EuiText>
+        <h3>Callouts</h3>
+      </EuiText>
+      <EuiSpacer size="m" />
+      <EuiCallOut title="I'm an information callout title." iconType="eye">
+        <p>
+          Use me to provide outstanding information to users. You can also use
+          it to provide tips to users. Adding an icon is optional.
+        </p>
+        <p>
+          The title should summarize the information so users can scan faster.
+          Don&apos;t use titles such as <strong>Info</strong> or{' '}
+          <strong>Note</strong>.
+        </p>
+      </EuiCallOut>
+      <EuiSpacer size="m" />
+      <EuiCallOut
+        title="I'm a success callout"
+        color="success"
+        iconType="check">
+        <p>
+          Use me to confirm the success of an operation. I can be just a title
+          if there is no additional information required.
+        </p>
+      </EuiCallOut>
+      <EuiSpacer size="m" />
+      <EuiCallOut
+        title="I'm a warning callout"
+        color="warning"
+        iconType="alert">
+        <p>
+          Use me to warn users that something might break in a not too long
+          future or that a non-critical error happened. The title should provide
+          a summary of the situation.
+        </p>
+        <p>
+          As much as possible, explain what lead to this, what harm it could do,
+          and how to resolve it. Information in the product is always better
+          than a link to documentation, but you can add one in{' '}
+          <EuiLink href="#">last resort</EuiLink>.
+        </p>
+        <EuiButton href="#" color="warning">
+          Recommended action
+        </EuiButton>
+      </EuiCallOut>
+      <EuiSpacer size="m" />
+      <EuiCallOut title="I'm an error callout" color="danger" iconType="alert">
+        <p>
+          Use me to notify users of an important error that has happened.
+          Something broke. The title should provide a summary of the situation.
+        </p>
+        <p>
+          As much as possible, explain what lead to this, what harm it could do,
+          and how to resolve it. Information in the product is always better
+          than a link to documentation, but you can add one in{' '}
+          <EuiLink href="#">last resort</EuiLink>.
+        </p>
+        <EuiButton href="#" color="danger">
+          Recommended action
+        </EuiButton>
+        <EuiButtonEmpty href="#" color="danger">
+          Secondary action
+        </EuiButtonEmpty>
+      </EuiCallOut>
+      <EuiSpacer size="xxl" />
     </KibanaLayout>
   );
 };
