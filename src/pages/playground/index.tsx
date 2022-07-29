@@ -3,6 +3,7 @@ import { EuiFlexGroup, EuiFlexItem, EuiCard, EuiIcon } from '@elastic/eui';
 import KibanaLayout from '../../layouts/kibana';
 
 const Index: FunctionComponent = () => {
+  const context = 'playground';
   return (
     <KibanaLayout
       template="empty"
@@ -17,7 +18,7 @@ const Index: FunctionComponent = () => {
             icon={<EuiIcon size="xxl" type="eye" />}
             title="Active help"
             description="Help that users see independently of their will. It's just there."
-            href="current/active"
+            href="playground/active"
           />
         </EuiFlexItem>
         <EuiFlexItem>
@@ -25,7 +26,7 @@ const Index: FunctionComponent = () => {
             icon={<EuiIcon size="xxl" type="help" />}
             title="Interactive help"
             description="Help that users can display intentionnally through an interaction."
-            href="current/interactive"
+            href="playground/interactive"
           />
         </EuiFlexItem>
 
@@ -34,7 +35,7 @@ const Index: FunctionComponent = () => {
             icon={<EuiIcon size="xxl" type="popout" />}
             title="External help"
             description="Help that lives outside of the product and makes users leave their context."
-            href="current/external"
+            href="playground/external"
           />
         </EuiFlexItem>
       </EuiFlexGroup>

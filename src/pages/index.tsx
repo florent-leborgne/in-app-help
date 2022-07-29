@@ -29,6 +29,10 @@ const Index: FunctionComponent = () => {
         <h1>Which version would you like to explore?</h1>
       </EuiTitle>
       <EuiSpacer size="m" />
+      <EuiButton onClick={() => router.push('/playground')} fullWidth>
+        Playground <EuiBadge color="warning">ON-Week</EuiBadge>
+      </EuiButton>
+      <EuiSpacer size="s" />
       <EuiButton onClick={() => router.push('/current')} fullWidth>
         Current <EuiBadge color="warning">In-progress</EuiBadge>
       </EuiButton>

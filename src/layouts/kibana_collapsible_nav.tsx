@@ -32,12 +32,17 @@ const TopLinks: EuiPinnableListGroupItemProps[] = [
     iconType: 'home',
     isActive: true,
     'aria-current': true,
-    href: `${pathPrefix}/current`,
+    href: `${pathPrefix}/`,
     pinnable: false,
   },
 ];
 
-const KibanaLinks: EuiPinnableListGroupItemProps[] = [
+const PlaygroundPageLinks: EuiPinnableListGroupItemProps[] = [
+  { label: 'Active help', href: `${pathPrefix}/playground/active` },
+  { label: 'Interactive help', href: `${pathPrefix}/playground/interactive` },
+  { label: 'External help', href: `${pathPrefix}/playground/external` },
+];
+const CurrentPageLinks: EuiPinnableListGroupItemProps[] = [
   { label: 'Active help', href: `${pathPrefix}/current/active` },
   { label: 'Interactive help', href: `${pathPrefix}/current/interactive` },
   { label: 'External help', href: `${pathPrefix}/current/external` },
@@ -54,8 +59,8 @@ const CollapsibleNav = () => {
       href: `${pathPrefix}/`,
     },
     {
-      text: 'Current',
-      href: `${pathPrefix}/current`,
+      text: 'Playground',
+      href: `${pathPrefix}/playground`,
     },
     {
       text: 'pageTitle',
@@ -206,17 +211,42 @@ const CollapsibleNav = () => {
               className="eui-textInheritColor"
               href="#/navigation/collapsible-nav"
               onClick={e => e.stopPropagation()}>
-              Analytics
+              Playground pages
             </a>
           }
           buttonElement="div"
-          iconType="logoKibana"
+          iconType="play"
           isCollapsible={true}
           initialIsOpen={openGroups.includes('Kibana')}
           onToggle={(isOpen: boolean) => toggleAccordion(isOpen, 'Kibana')}>
           <EuiPinnableListGroup
             aria-label="Kibana" // A11y : EuiCollapsibleNavGroup can't correctly pass the `title` as the `aria-label` to the right HTML element, so it must be added manually
-            listItems={alterLinksWithCurrentState(KibanaLinks)}
+            listItems={alterLinksWithCurrentState(PlaygroundPageLinks)}
+            pinTitle={addLinkNameToPinTitle}
+            onPinClick={addPin}
+            maxWidth="none"
+            color="subdued"
+            gutterSize="none"
+            size="s"
+          />
+        </EuiCollapsibleNavGroup>
+        <EuiCollapsibleNavGroup
+          title={
+            <a
+              className="eui-textInheritColor"
+              href="#/navigation/collapsible-nav"
+              onClick={e => e.stopPropagation()}>
+              Current pages
+            </a>
+          }
+          buttonElement="div"
+          iconType="eye"
+          isCollapsible={true}
+          initialIsOpen={openGroups.includes('Kibana')}
+          onToggle={(isOpen: boolean) => toggleAccordion(isOpen, 'Kibana')}>
+          <EuiPinnableListGroup
+            aria-label="Kibana" // A11y : EuiCollapsibleNavGroup can't correctly pass the `title` as the `aria-label` to the right HTML element, so it must be added manually
+            listItems={alterLinksWithCurrentState(CurrentPageLinks)}
             pinTitle={addLinkNameToPinTitle}
             onPinClick={addPin}
             maxWidth="none"
@@ -283,7 +313,7 @@ const CollapsibleNav = () => {
               <EuiHeaderSectionItemButton
                 key={useGeneratedHtmlId()}
                 aria-label="Account menu">
-                <EuiAvatar name="John Username" size="s" />
+                <EuiAvatar name="Content Design" size="s" />
               </EuiHeaderSectionItemButton>,
             ],
             borders: 'none',
